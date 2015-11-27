@@ -7,7 +7,10 @@ module load intel-fc/15.0.3.187
 module load intel-cc/15.0.3.187
 module load openmpi/1.8.8
 module load netcdf/4.3.3.1
+
 export WRFIO_NCD_LARGE_FILE_SUPPORT=1
+export JASPERINC=/usr/include
+export JASPERLIB=/usr/lib64
 
 # Un-comment to compile with chemistry
 #export WRF_CHEM=1
@@ -25,10 +28,10 @@ qsub -V -N wrf_compile << EOF_compile
 #PBS -j oe
 #PBS -q express
 #PBS -l wd
-#PBS -l software=intel-cc/2:intel-fc/2
+#PBS -l software=intel-compiler
 
 export J="-j \$PBS_NCPUS"
 
-./compile em_real
+./compile em_tropical_cyclone
 EOF_compile
 
