@@ -1,0 +1,18 @@
+#!/bin/tcsh
+#PBS -l walltime=00:01:00
+#PBS -l mem=4GB
+#PBS -l ncpus=1
+#PBS -j oe
+#PBS -q express
+#PBS -l wd
+#PBS -m abe
+#PBS -M craig.arthur@ga.gov.au
+
+module purge
+module load openmpi/1.8.8
+module load netcdf/4.3.3.1
+
+limit stacksize unlimited
+
+echo running with $PBS_NCPUS mpi ranks
+time mpirun -np $PBS_NCPUS -report-bindings ./ideal.exe
