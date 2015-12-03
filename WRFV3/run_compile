@@ -25,7 +25,7 @@ qsub -V -N wrf_compile << EOF_compile
 #PBS -j oe
 #PBS -q express
 #PBS -l wd
-#PBS -l software=intel-cc/2:intel-fc/2
+#PBS -l software=intel-compiler
 
 export J="-j \$PBS_NCPUS"
 
