@@ -2071,6 +2071,29 @@ CONTAINS
          ENDDO
       ENDIF
 
+      IF (ICLOUD == 3) THEN
+        IF ( F_QC .AND. F_QI ) THEN
+           CALL wrf_debug (150, 'DEBUG-GT, back to micro-only Qc and Qi')
+           DO j = jts,jte
+           DO k = kts,kte
+           DO i = its,ite
+              qc(i,k,j) = qc_save(i,k,j)
+              qi(i,k,j) = qi_save(i,k,j)
+           ENDDO
+           ENDDO
+           ENDDO
+           IF ( F_QS ) THEN
+              DO j = jts,jte
+              DO k = kts,kte
+              DO i = its,ite
+                 qs(i,k,j) = qs_save(i,k,j)
+              ENDDO
+              ENDDO
+              ENDDO
+           ENDIF
+        ENDIF
+      ENDIF
+
      IF ( PRESENT( qc  ) .AND. PRESENT( qc_cu ) ) THEN 
          IF ( icloud_cu .NE. 0 ) THEN
          DO j=jts,jte
