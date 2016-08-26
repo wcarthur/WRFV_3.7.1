@@ -295,12 +295,12 @@ CONTAINS
   ENDDO
   ENDDO
 
-  xs=ide/2 -3
-  xs=ids   -3
-  xe=xs + 6
-  ys=jde/2 -3
-  ye=ys + 6
-  mtn_ht = 500
+  xs=ide/2 -20
+  !xs=ids   -3
+  xe=xs + 40
+  ys=jde/2 -20
+  ye=ys + 40
+  mtn_ht = 250
 #ifdef MTN
   DO j=max(ys,jds),min(ye,jde-1)
   DO i=max(xs,ids),min(xe,ide-1)
@@ -318,14 +318,14 @@ CONTAINS
   ENDDO
   ENDDO
 #endif
-#ifdef NS_RIDGE
+!#ifdef NS_RIDGE
   DO j=jds,jde
   DO i=max(xs,ids),min(xe,ide-1)
      grid%ht(i,j) = mtn_ht * 0.50 * &
                ( 1. + COS ( 2*pi/(xe-xs) * ( i-xs ) + pi ) )
   ENDDO
   ENDDO
-#endif
+!#endif
   DO j=jts,jte
   DO i=its,ite
     grid%phb(i,1,j) = g * grid%ht(i,j)
