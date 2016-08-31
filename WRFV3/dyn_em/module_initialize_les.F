@@ -111,6 +111,10 @@ CONTAINS
 !  For LES, add randx
    real :: randx
 
+!  For MTN definition:
+   REAL :: hill_width
+   INTEGER :: idx
+
 #ifdef DM_PARALLEL
 #    include <data_calls.inc>
 #endif
@@ -295,12 +299,21 @@ CONTAINS
   ENDDO
   ENDDO
 
-  xs=ide/2 -20
+  CALL nl_get_hill_width(1, hill_width)
+  CALL nl_get_hill_height(1, mtn_ht)
+  !hill_width = 1000.
+  idx = hill_width/config_flags%dx
+  write(6,*) 'hill height: ', mtn_ht
+  write(6,*) 'hill width: ',  hill_width
+  write(6,*) 'grid dx: ', config_flags%dx
+  write(6,*) 'idx: ', idx
+
+  xs=ide/2 - idx
   !xs=ids   -3
-  xe=xs + 40
-  ys=jde/2 -20
-  ye=ys + 40
-  mtn_ht = 250
+  xe=xs + 2. * idx
+  ys=jde/2 - idx
+  ye=ys + 2. * idx
+  !mtn_ht = 250
 #ifdef MTN
   DO j=max(ys,jds),min(ye,jde-1)
   DO i=max(xs,ids),min(xe,ide-1)

@@ -2006,6 +2006,10 @@ rconfig   integer tile_strategy           namelist,domains	1             0      
 rconfig   integer nproc_x                 namelist,domains	1             -1      -      "nproc_x"              "-1 means not set"      ""
 rconfig   integer nproc_y		  namelist,domains	1             -1      -      "nproc_y"              "-1 means not set"      ""
 rconfig   integer irand                   namelist,domains	1             0       -      "irand"           ""      ""
+
+rconfig   real hill_width                 namelist,domains	1             0.      irh    "hill_width"               "Width of idealised hill"      "m"
+rconfig   real hill_height                namelist,domains	1             0.      irh    "hill_height"              "Height of idealised hill"     "m"
+
 rconfig   real    dt                      derived              max_domains    2.      h     "dt"        "TEMPORAL RESOLUTION"      "SECONDS"
 
 rconfig   integer fft_used                derived               1             0       -     "fft_used"  "stochastic, spectral nudging, polar filters - turn on if these are used"
