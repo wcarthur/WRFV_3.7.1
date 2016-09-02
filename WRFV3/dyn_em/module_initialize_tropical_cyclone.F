@@ -566,7 +566,7 @@ CONTAINS
           dd1 = 2.0 * rmax / ( rref(i) + rmax )
           vr = sqrt( vmax**2 * (rref(i)/rmax)**2     &
           * ( dd1 ** 3 - dd2 ** 3 ) + 0.25*fcor*fcor*rref(i)*rref(i) )   &
-                  - 0.5 * fcor * rref(i)
+                  - 0.5 * ABS(fcor) * rref(i)
         else 
           vr = 0.0
         endif
@@ -603,7 +603,7 @@ CONTAINS
        + (rref(i-1)-rref(i))/(cp*0.5*(thvref(i-1,k)+thvref(i,k))) * 0.5 * &
            ( vref(i  ,k)*vref(i  ,k)/rref(i)                              &
             +vref(i-1,k)*vref(i-1,k)/rref(i-1)                            &
-             + fcor * ( vref(i,k) + vref(i-1,k) ) )
+             + ABS(fcor) * ( vref(i,k) + vref(i-1,k) ) )
         enddo
       enddo
 
