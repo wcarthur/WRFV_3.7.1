@@ -216,7 +216,7 @@ CONTAINS
          grid%cosa(i,j)     = 1.
          grid%e(i,j)        = 0.
 !  for LES, include Coriolis force
-         grid%f(i,j)        = 1.e-4 
+         grid%f(i,j)        = 0. !1.e-4 
 
       END DO
    END DO
